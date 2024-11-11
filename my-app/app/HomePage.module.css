@@ -1,0 +1,136 @@
+/* HomePage.module.css */
+
+/* Container styling */
+.container {
+    max-width: 1200px; /* Set a maximum width for the container */
+    margin: 0 auto;    /* Center the container horizontally */
+    padding: 20px;     /* Add padding inside the container */
+  }
+  
+  /* Heading styling */
+  .heading {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Introductory paragraph styling */
+  .intro {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Link styling */
+  .aboutLink {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .aboutLink:hover {
+    text-decoration: underline;
+  }
+  
+  /* Flex container for button and dropdown menu */
+  .buttonDropdownContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between the button and dropdown */
+    margin-bottom: 20px; /* Space below the container */
+  }
+  
+  /* Submit button styling */
+  .submitButton {
+    flex-shrink: 0; /* Prevent the button from shrinking */
+  }
+  
+  .submitButton button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .submitButton button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Dropdown menu styling */
+  .dropdownMenu {
+    flex-grow: 10; /* Allow the dropdown to take available space */
+    width: 200%;
+  }
+  
+  .dropdownMenu select {
+    width: 1200%;
+    padding: 10px;
+    border: 1px solid #dc2b2b;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #dc2b2b;
+    color: #f22121;
+    appearance: none; /* Remove default styling */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+  }
+  
+  /* Main text field styling */
+  .mainTextField {
+    border: 1px solid #ccc;
+    padding: 15px;
+    height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  /* Time frame section styling */
+  .timeFrame {
+    margin-bottom: 20px;
+  }
+  
+  /* Summarize content button styling */
+  .summarizeContent {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .summarizeContent button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .summarizeContent button:hover {
+    background-color: #218838;
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .buttonDropdownContainer {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: stretch;   /* Ensure items take full width */
+    }
+  
+    .submitButton,
+    .dropdownMenu {
+      width: 100%; /* Full width for each item */
+      margin: 5px 0; /* Vertical spacing between items */
+    }
+  }
+  
