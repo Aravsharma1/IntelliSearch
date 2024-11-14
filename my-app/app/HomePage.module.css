@@ -1,136 +1,107 @@
-/* HomePage.module.css */
+/* app/HomePage.module.css */
 
-/* Container styling */
+/* Container for the entire page */
 .container {
-    max-width: 1200px; /* Set a maximum width for the container */
-    margin: 0 auto;    /* Center the container horizontally */
-    padding: 20px;     /* Add padding inside the container */
-  }
-  
-  /* Heading styling */
-  .heading {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Introductory paragraph styling */
-  .intro {
-    text-align: center;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  /* Link styling */
-  .aboutLink {
-    display: block;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .aboutLink:hover {
-    text-decoration: underline;
-  }
-  
-  /* Flex container for button and dropdown menu */
-  .buttonDropdownContainer {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px; /* Space between the button and dropdown */
-    margin-bottom: 20px; /* Space below the container */
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling */
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  /* Subtitle styling */
+  .subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Form container for the dropdowns and inputs */
+  .formContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Dropdown menu styling */
+  .dropdown {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Date input styling */
+  .dateInput {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
   
   /* Submit button styling */
   .submitButton {
-    flex-shrink: 0; /* Prevent the button from shrinking */
-  }
-  
-  .submitButton button {
-    background-color: #007bff;
-    color: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #0070f3;
     border: none;
-    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+    transition: background-color 0.3s;
   }
   
-  .submitButton button:hover {
-    background-color: #0056b3;
+  .submitButton:hover {
+    background-color: #005bb5;
   }
   
-  /* Dropdown menu styling */
-  .dropdownMenu {
-    flex-grow: 10; /* Allow the dropdown to take available space */
-    width: 200%;
-  }
-  
-  .dropdownMenu select {
-    width: 1200%;
-    padding: 10px;
-    border: 1px solid #dc2b2b;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #dc2b2b;
-    color: #f22121;
-    appearance: none; /* Remove default styling */
-    -webkit-appearance: none; /* For Safari */
-    -moz-appearance: none; /* For Firefox */
-    
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 12px;
-  }
-  
-  /* Main text field styling */
-  .mainTextField {
-    border: 1px solid #ccc;
-    padding: 15px;
-    height: 200px;
-    overflow-y: auto;
+  /* Articles container styling */
+  .articlesContainer {
+    width: 100%;
+    margin-top: 1.5rem;
     background-color: #fff;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Time frame section styling */
-  .timeFrame {
-    margin-bottom: 20px;
+  .articleItem {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
   }
   
-  /* Summarize content button styling */
-  .summarizeContent {
-    text-align: center;
-    margin-bottom: 20px;
+  .articleTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
   }
   
-  .summarizeContent button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+  .articleDescription {
+    font-size: 1rem;
+    color: #555;
   }
   
-  .summarizeContent button:hover {
-    background-color: #218838;
-  }
-  
-  /* Responsive design adjustments */
-  @media (max-width: 768px) {
-    .buttonDropdownContainer {
-      flex-direction: column; /* Stack items vertically on smaller screens */
-      align-items: stretch;   /* Ensure items take full width */
-    }
-  
-    .submitButton,
-    .dropdownMenu {
-      width: 100%; /* Full width for each item */
-      margin: 5px 0; /* Vertical spacing between items */
-    }
+  /* Loading text styling */
+  .loadingText {
+    font-size: 1rem;
+    color: #666;
   }
   
