@@ -1,14 +1,12 @@
 import OpenAI from "openai"; // Import OpenAI client
-import { config } from "dotenv"; // Import dotenv for environment variables
-
-config(); // Load environment variables from .env file
+import dotenv from "dotenv"; // Import dotenv for environment variables
+dotenv.config({ path: '../../../.env' }); // Loading the environment variables
 
 // Create an OpenAI client instance with the API key
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, // Ensure the API key is correctly set in .env
 });
-
-// Handle POST requests
+// Making a POST request
 export async function POST(request) {
   try {
     // Parse the incoming request body to get the content to summarize

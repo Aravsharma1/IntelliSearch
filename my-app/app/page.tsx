@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./HomePage.module.css";
 
 interface Article {
@@ -15,11 +15,12 @@ export default function HomePage() {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [summary, setSummary] = useState("");
-  const [summarizing, setSummarizing] = useState(false);
-  const [error, setError] = useState("");
+  const [articlesFetched, setArticlesFetched] = useState(false); // Track if articles have been fetched
+  const summaryRef = useRef<HTMLDivElement>(null); // Reference for summary section
 
   const fetchArticles = () => {
     setLoading(true);
+    setArticlesFetched(false); // Reset the state before fetching articles
 
     const query = new URLSearchParams({
       category,
@@ -37,6 +38,7 @@ export default function HomePage() {
       .then((data) => {
         setArticles(data.articles || []);
         setLoading(false);
+        setArticlesFetched(true); // Set to true once articles are fetched
       })
       .catch((error) => {
         console.error(error);
@@ -44,49 +46,30 @@ export default function HomePage() {
       });
   };
 
-  const handleSummarize = () => {
-    setSummarizing(true);
-    setError("");
-    setSummary("");
-
-    const contentToSummarize = articles
-      .map((article) => `${article.title} - ${article.description}`)
-      .join("\n");
-
-    if (!contentToSummarize.trim()) {
-      setError("No content available for summarization.");
-      setSummarizing(false);
-      return;
-    }
-
-    fetch("/api/summarize", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ content: contentToSummarize }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to summarize content.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setSummary(data.summary || "No summary available.");
-        setSummarizing(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setError("Error summarizing content.");
-        setSummarizing(false);
+  const handleSummarize = async () => {
+    try {
+      const response = await fetch("/api/summarize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: articles.map((a) => a.title).join(". ") }),
       });
+
+      const data = await response.json();
+      setSummary(data.summary);
+
+      // Scroll to the summary section
+      if (summaryRef.current) {
+        summaryRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    } catch (error) {
+      console.error("Error summarizing content:", error);
+    }
   };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Welcome to IntelliSearch!</h1>
-      <p className={styles.subtitle}>Get the latest updates from tech, entertainment, business and more.</p>
+      <p className={styles.subtitle}>This is the homepage of the news digest app.</p>
 
       <div className={styles.formContainer}>
         <label>
@@ -124,23 +107,31 @@ export default function HomePage() {
           />
         </label>
 
-        <div className={styles.buttonContainer}>
-          <button
-            className={styles.submitButton}
-            onClick={fetchArticles}
-          >
-            Submit
-          </button>
+        <button className={styles.submitButton} onClick={fetchArticles}>
+          Submit
+        </button>
+
+        {/* Show Summarize Content button only if articles are fetched */}
+        {articlesFetched && (
           <button
             className={styles.summarizeButton}
             onClick={handleSummarize}
-            disabled={summarizing}
+            disabled={!articles.length}
           >
-            {summarizing ? "Summarizing..." : "Summarize"}
+            Summarize Content
           </button>
-        </div>
+        )}
       </div>
 
+      {/* Summary Section */}
+      {summary && (
+        <div ref={summaryRef} className={styles.summaryContainer}>
+          <h2 className={styles.summaryTitle}>Summary</h2>
+          <p className={styles.summaryText}>{summary}</p>
+        </div>
+      )}
+
+      {/* Articles Section */}
       {loading ? (
         <p className={styles.loadingText}>Loading news...</p>
       ) : (
@@ -162,15 +153,6 @@ export default function HomePage() {
       <p>No articles found.</p>
     )}
   </div>
-      )}
-
-      {error && <p className={styles.error}>{error}</p>}
-
-      {summary && (
-        <div className={styles.summaryContainer}>
-          <h2 className={styles.summaryTitle}>Summary:</h2>
-          <p className={styles.summaryText}>{summary}</p>
-        </div>
       )}
     </div>
   );

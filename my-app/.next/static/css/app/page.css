@@ -1,0 +1,134 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/HomePage.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+/* app/HomePage.module.css */
+
+/* General container */
+.HomePage_container__gWIfR {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f5f7fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.HomePage_title__C6gkd {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Subtitle styling */
+.HomePage_subtitle__R8kYc {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Form controls */
+.HomePage_formContainer__V2KGZ {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Dropdown styling */
+.HomePage_dropdown__0pXI1,
+.HomePage_dateInput__MIYk1 {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Buttons */
+.HomePage_submitButton__hX6Ij,
+.HomePage_summarizeButton__1p2_R {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.HomePage_submitButton__hX6Ij:hover,
+.HomePage_summarizeButton__1p2_R:hover {
+  background-color: #005bb5;
+}
+
+.HomePage_summarizeButton__1p2_R {
+  background-color: #28a745;
+}
+
+.HomePage_summarizeButton__1p2_R:hover {
+  background-color: #218838;
+}
+
+/* Summary styling */
+.HomePage_summaryContainer__0LFYa {
+  margin-top: 1.5rem;
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.HomePage_summaryTitle__y_dCV {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.HomePage_summaryText__WChEv {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Articles container */
+.HomePage_articlesContainer__2Wzwj {
+  width: 100%;
+  margin-top: 1.5rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.HomePage_articleItem__WCA6Q {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.HomePage_articleTitle__r4_FV {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.HomePage_articleDescription__g7h_U {
+  font-size: 1rem;
+  color: #555;
+}
+
+.HomePage_loadingText__ePqqT {
+  font-size: 1rem;
+  color: #666;
+}
+
