@@ -1,7 +1,6 @@
 // app/api/news/route.js
 import dotenv from "dotenv";
 dotenv.config({ path: './.env' });
-
 export async function GET(request) {
   const apiKey = process.env.news_apikey;
   const { searchParams } = new URL(request.url);
