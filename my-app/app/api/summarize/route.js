@@ -2,6 +2,7 @@ import OpenAI from "openai"; // Import OpenAI client
 import dotenv from "dotenv"; // Import dotenv for environment variables
 dotenv.config({ path: '../../../.env' }); // Loading the environment variables
 
+
 // Create an OpenAI client instance with the API key
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, // Ensure the API key is correctly set in .env

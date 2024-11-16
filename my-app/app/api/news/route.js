@@ -5,6 +5,7 @@ export async function GET(request) {
   const apiKey = process.env.news_apikey;
   const { searchParams } = new URL(request.url);
 
+  
   // Retrieve category and date range from query parameters
   const category = searchParams.get('category') || 'technology'; // Default to 'technology'
   const from = searchParams.get('from'); // Start date for articles
