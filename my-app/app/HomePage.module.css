@@ -2,106 +2,163 @@
 
 /* Container for the entire page */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #f5f7fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Title styling */
-  .title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-  
-  /* Subtitle styling */
-  .subtitle {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  
-  /* Form container for the dropdowns and inputs */
-  .formContainer {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-  }
-  
-  /* Dropdown menu styling */
-  .dropdown {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Date input styling */
-  .dateInput {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Submit button styling */
-  .submitButton {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #0070f3;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .submitButton:hover {
-    background-color: #005bb5;
-  }
-  
-  /* Articles container styling */
-  .articlesContainer {
-    width: 100%;
-    margin-top: 1.5rem;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .articleItem {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .articleTitle {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .articleDescription {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  /* Loading text styling */
-  .loadingText {
-    font-size: 1rem;
-    color: #666;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f5f7fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Subtitle styling */
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Form container for the dropdowns and inputs */
+.formContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Dropdown menu styling */
+.dropdown {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Date input styling */
+.dateInput {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Submit button styling */
+.submitButton {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #005bb5;
+}
+
+/* Summarize button styling */
+.summarizeButton {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.summarizeButton:hover {
+  background-color: #218838;
+}
+
+.summarizeButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Articles container styling */
+.articlesContainer {
+  width: 100%;
+  margin-top: 1.5rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.articleItem {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.articleTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.articleDescription {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Loading text styling */
+.loadingText {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Error message styling */
+.error {
+  color: red;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Summary container styling */
+.summaryContainer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summaryTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.summaryText {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Button container to align Submit and Summarize buttons */
+.buttonContainer {
+  display: flex;
+  gap: 1rem; /* Add space between buttons */
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
