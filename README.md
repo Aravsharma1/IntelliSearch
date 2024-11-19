@@ -42,7 +42,7 @@ IntelliSearch is an AI-powered news aggregation and summarization tool designed 
 ## Tech Stack
 
 - **Frontend**: React, Next.js, TailwindCSS
-- **Backend**: Node.js, OpenAI API, News API
+- **Backend**: Node.js, OpenAI API, News API, Firebase
 - **Styling**: Custom CSS (using a `HomePage.module.css` file)
 - **Environment Management**: dotenv
 
