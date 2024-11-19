@@ -1,7 +1,15 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./HomePage.module.css";
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import firebaseConfig from "@/app/firebaseConfig"; // Ensure your Firebase config is correct
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 interface Article {
   title: string;
@@ -15,12 +23,33 @@ export default function HomePage() {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [summary, setSummary] = useState("");
-  const [articlesFetched, setArticlesFetched] = useState(false); // Track if articles have been fetched
-  const summaryRef = useRef<HTMLDivElement>(null); // Reference for summary section
+  const [articlesFetched, setArticlesFetched] = useState(false);
+  const [user, setUser] = useState<any>(null); // Track logged-in user
+  const summaryRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  // Monitor authentication state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        router.push("/auth/signin"); // Redirect to sign-in if not authenticated
+      }
+    });
+
+    return () => unsubscribe();
+  }, [router]);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    setUser(null);
+    router.push("/auth/signin");
+  };
 
   const fetchArticles = () => {
     setLoading(true);
-    setArticlesFetched(false); // Reset the state before fetching articles
+    setArticlesFetched(false);
 
     const query = new URLSearchParams({
       category,
@@ -38,7 +67,7 @@ export default function HomePage() {
       .then((data) => {
         setArticles(data.articles || []);
         setLoading(false);
-        setArticlesFetched(true); // Set to true once articles are fetched
+        setArticlesFetched(true);
       })
       .catch((error) => {
         console.error(error);
@@ -57,7 +86,6 @@ export default function HomePage() {
       const data = await response.json();
       setSummary(data.summary);
 
-      // Scroll to the summary section
       if (summaryRef.current) {
         summaryRef.current.scrollIntoView({ behavior: "smooth" });
       }
@@ -68,6 +96,21 @@ export default function HomePage() {
 
   return (
     <div className={styles.container}>
+      {/* Navigation */}
+      <nav className={styles.nav}>
+        {!user ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            <span>Welcome, {user.email}!</span>
+            <button className={styles.logoutButton} onClick={handleLogout}>
+              Log Out
+            </button>
+          </>
+        )}
+      </nav>
+
+      {/* Main Content */}
       <h1 className={styles.title}>Welcome to IntelliSearch!</h1>
       <p className={styles.subtitle}>This is the homepage of the news digest app.</p>
 
@@ -111,7 +154,6 @@ export default function HomePage() {
           Submit
         </button>
 
-        {/* Show Summarize Content button only if articles are fetched */}
         {articlesFetched && (
           <button
             className={styles.summarizeButton}
@@ -136,23 +178,27 @@ export default function HomePage() {
         <p className={styles.loadingText}>Loading news...</p>
       ) : (
         <div className={styles.articlesContainer}>
-    {articles.length > 0 ? (
-      <ul>
-        {articles
-          .filter((article) => 
-            article.title !== "[Removed]" && article.description !== "[Removed]"
-          )
-          .map((article, index) => (
-            <li key={index} className={styles.articleItem}>
-              <h3 className={styles.articleTitle}>{article.title}</h3>
-              <p className={styles.articleDescription}>{article.description}</p>
-            </li>
-          ))}
-      </ul>
-    ) : (
-      <p>No articles found.</p>
-    )}
-  </div>
+          {articles.length > 0 ? (
+            <ul>
+              {articles
+                .filter(
+                  (article) =>
+                    article.title !== "[Removed]" &&
+                    article.description !== "[Removed]"
+                )
+                .map((article, index) => (
+                  <li key={index} className={styles.articleItem}>
+                    <h3 className={styles.articleTitle}>{article.title}</h3>
+                    <p className={styles.articleDescription}>
+                      {article.description}
+                    </p>
+                  </li>
+                ))}
+            </ul>
+          ) : (
+            <p>No articles found.</p>
+          )}
+        </div>
       )}
     </div>
   );

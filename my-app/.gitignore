@@ -40,3 +40,20 @@ yarn-error.log*
 next-env.d.ts
 
 .next/
+
+# firebase files/folders 
+firebaseConfig.ts
+database-debug.log
+firestore-debug.log
+dataconnect-debug.log
+ui-debug.log
+storage.rules
+database.rules.json
+dataconnect-generated/
+dataconnect/
+.firebase/
+.firebaserc
+firebase-debug.log
+firebase.json
+.*
+.github
