@@ -6,7 +6,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import firebaseConfig from "@/app/firebaseConfig"
+import firebaseConfig from "@/app/firebaseConfig";
+import styles from "../AuthPage.module.css"; // Shared CSS with Sign In
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -21,21 +22,22 @@ export default function SignupPage() {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      router.push("/"); // Redirect to homepage
+      router.push("/"); // Redirect to homepage after successful signup
     } catch (err: any) {
       setError(err.message);
     }
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSignup}>
+    <div className={styles.authContainer}>
+      <h1 className={styles.authTitle}>Sign Up</h1>
+      <form className={styles.authForm} onSubmit={handleSignup}>
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className={styles.authInput}
           required
         />
         <input
@@ -43,11 +45,20 @@ export default function SignupPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className={styles.authInput}
           required
         />
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Sign Up</button>
+        {error && <p className={styles.authError}>{error}</p>}
+        <button type="submit" className={styles.authButton}>
+          Sign Up
+        </button>
       </form>
+      <p className={styles.redirectText}>
+        Already have an account?{" "}
+        <a href="/auth/signin" className={styles.redirectLink}>
+          Sign in here
+        </a>
+      </p>
     </div>
   );
 }

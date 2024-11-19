@@ -6,7 +6,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import firebaseConfig from "@/app/firebaseConfig"
+import firebaseConfig from "@/app/firebaseConfig";
+import styles from "../AuthPage.module.css"; // Add a new CSS file for auth pages
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -21,22 +22,22 @@ export default function SigninPage() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/")
-      //router.push("/"); // Redirect to homepage
+      router.push("/"); // Redirect to homepage
     } catch (err: any) {
       setError(err.message);
     }
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSignin}>
+    <div className={styles.authContainer}>
+      <h1 className={styles.authTitle}>Sign In</h1>
+      <form className={styles.authForm} onSubmit={handleSignin}>
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className={styles.authInput}
           required
         />
         <input
@@ -44,11 +45,20 @@ export default function SigninPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className={styles.authInput}
           required
         />
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Sign In</button>
+        {error && <p className={styles.authError}>{error}</p>}
+        <button type="submit" className={styles.authButton}>
+          Sign In
+        </button>
       </form>
+      <p className={styles.redirectText}>
+        Don't have an account?{" "}
+        <a href="/auth/signup" className={styles.redirectLink}>
+          Sign up here
+        </a>
+      </p>
     </div>
   );
 }

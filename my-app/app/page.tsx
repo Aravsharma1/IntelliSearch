@@ -32,12 +32,11 @@ export default function HomePage() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        setUser(currentUser);
+        setUser(currentUser); // User is authenticated
       } else {
-        router.push("/auth/signin"); // Redirect to sign-in if not authenticated
+        router.push("/auth/signin"); // Redirect unauthenticated users
       }
     });
-
     return () => unsubscribe();
   }, [router]);
 
@@ -95,111 +94,109 @@ export default function HomePage() {
   };
 
   return (
-    <div className={styles.container}>
-      {/* Navigation */}
-      <nav className={styles.nav}>
-        {!user ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            <span>Welcome, {user.email}!</span>
-            <button className={styles.logoutButton} onClick={handleLogout}>
-              Log Out
-            </button>
-          </>
-        )}
-      </nav>
+    <>
+      {/* Header */}
+      <header className={styles.header}>
+        <div className={styles.userInfo}>
+          <span>Welcome, {user?.email}!</span>
+          <button className={styles.logoutButton} onClick={handleLogout}>
+            Log Out
+          </button>
+        </div>
+      </header>
 
       {/* Main Content */}
-      <h1 className={styles.title}>Welcome to IntelliSearch!</h1>
-      <p className={styles.subtitle}>This is the homepage of the news digest app.</p>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Welcome to IntelliSearch!</h1>
+        <p className={styles.subtitle}>This is the homepage of the news digest app.</p>
 
-      <div className={styles.formContainer}>
-        <label>
-          <select
-            className={styles.dropdown}
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="technology">Technology</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="business">Business</option>
-            <option value="sports">Sports</option>
-            <option value="science">Science</option>
-            <option value="health">Health</option>
-          </select>
-        </label>
+        <div className={styles.formContainer}>
+          <label>
+            <select
+              className={styles.dropdown}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="technology">Technology</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="business">Business</option>
+              <option value="sports">Sports</option>
+              <option value="science">Science</option>
+              <option value="health">Health</option>
+            </select>
+          </label>
 
-        <label>
-          From:
-          <input
-            className={styles.dateInput}
-            type="date"
-            value={fromDate}
-            onChange={(e) => setFromDate(e.target.value)}
-          />
-        </label>
+          <label>
+            From:
+            <input
+              className={styles.dateInput}
+              type="date"
+              value={fromDate}
+              onChange={(e) => setFromDate(e.target.value)}
+            />
+          </label>
 
-        <label>
-          To:
-          <input
-            className={styles.dateInput}
-            type="date"
-            value={toDate}
-            onChange={(e) => setToDate(e.target.value)}
-          />
-        </label>
+          <label>
+            To:
+            <input
+              className={styles.dateInput}
+              type="date"
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+            />
+          </label>
 
-        <button className={styles.submitButton} onClick={fetchArticles}>
-          Submit
-        </button>
-
-        {articlesFetched && (
-          <button
-            className={styles.summarizeButton}
-            onClick={handleSummarize}
-            disabled={!articles.length}
-          >
-            Summarize Content
+          <button className={styles.submitButton} onClick={fetchArticles}>
+            Submit
           </button>
-        )}
-      </div>
 
-      {/* Summary Section */}
-      {summary && (
-        <div ref={summaryRef} className={styles.summaryContainer}>
-          <h2 className={styles.summaryTitle}>Summary</h2>
-          <p className={styles.summaryText}>{summary}</p>
-        </div>
-      )}
-
-      {/* Articles Section */}
-      {loading ? (
-        <p className={styles.loadingText}>Loading news...</p>
-      ) : (
-        <div className={styles.articlesContainer}>
-          {articles.length > 0 ? (
-            <ul>
-              {articles
-                .filter(
-                  (article) =>
-                    article.title !== "[Removed]" &&
-                    article.description !== "[Removed]"
-                )
-                .map((article, index) => (
-                  <li key={index} className={styles.articleItem}>
-                    <h3 className={styles.articleTitle}>{article.title}</h3>
-                    <p className={styles.articleDescription}>
-                      {article.description}
-                    </p>
-                  </li>
-                ))}
-            </ul>
-          ) : (
-            <p>No articles found.</p>
+          {articlesFetched && (
+            <button
+              className={styles.summarizeButton}
+              onClick={handleSummarize}
+              disabled={!articles.length}
+            >
+              Summarize Content
+            </button>
           )}
         </div>
-      )}
-    </div>
+
+        {/* Summary Section */}
+        {summary && (
+          <div ref={summaryRef} className={styles.summaryContainer}>
+            <h2 className={styles.summaryTitle}>Summary</h2>
+            <p className={styles.summaryText}>{summary}</p>
+          </div>
+        )}
+
+        {/* Articles Section */}
+        {loading ? (
+          <p className={styles.loadingText}>Loading news...</p>
+        ) : (
+          <div className={styles.articlesContainer}>
+            {articles.length > 0 ? (
+              <ul>
+                {articles
+                  .filter(
+                    (article) =>
+                      article.title !== "[Removed]" &&
+                      article.description !== "[Removed]"
+                  )
+                  .map((article, index) => (
+                    <li key={index} className={styles.articleItem}>
+                      <h3 className={styles.articleTitle}>{article.title}</h3>
+                      <p className={styles.articleDescription}>
+                        {article.description}
+                      </p>
+                    </li>
+                  ))}
+              </ul>
+            ) : (
+              <p>No articles found.</p>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 }
