@@ -6,6 +6,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import firebaseConfig from "@/app/firebaseConfig"; // Ensure your Firebase config is correct
+import Link from "next/link";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -109,6 +110,8 @@ export default function HomePage() {
       <div className={styles.container}>
         <h1 className={styles.title}>Welcome to IntelliSearch!</h1>
         <p className={styles.subtitle}>This is the homepage of the news digest app.</p>
+        <Link href="/subscribe"> <button>Subscribe Now</button> </Link>
+
 
         <div className={styles.formContainer}>
           <label>
