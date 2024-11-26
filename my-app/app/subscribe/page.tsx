@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import styles from "./SubscribePage.module.css"; // Import CSS file for styling
 
 export default function Subscribe() {
   const handleSubscribe = async () => {
@@ -22,18 +23,47 @@ export default function Subscribe() {
   };
 
   return (
-    <button
-      onClick={handleSubscribe}
-      style={{
-        padding: "10px 20px",
-        backgroundColor: "#0070f3",
-        color: "#fff",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer",
-      }}
-    >
-      Subscribe Now
-    </button>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h1 className={styles.title}>
+          Subscribe to <span className={styles.brand}>IntelliSearch Pro</span>
+        </h1>
+        <p className={styles.description}>
+          Unlock exclusive features with IntelliSearch's subscription plan:
+        </p>
+        <div className={styles.benefitsContainer}>
+          <div className={styles.benefit}>
+            <img
+              src="/icons/news-icon.png"
+              alt="News updates"
+              className={styles.icon}
+            />
+            <p>Personalized daily/weekly news updates</p>
+          </div>
+          <div className={styles.benefit}>
+            <img
+              src="/icons/summary-icon.png"
+              alt="Curated summaries"
+              className={styles.icon}
+            />
+            <p>Curated summaries tailored to your interests</p>
+          </div>
+          <div className={styles.benefit}>
+            <img
+              src="/icons/email-icon.png"
+              alt="Email notifications"
+              className={styles.icon}
+            />
+            <p>Seamless email notifications</p>
+          </div>
+        </div>
+        <p className={styles.price}>
+          <span>Only</span> <strong>$2.99/month</strong>
+        </p>
+        <button onClick={handleSubscribe} className={styles.subscribeButton}>
+          Subscribe Now
+        </button>
+      </div>
+    </div>
   );
 }
