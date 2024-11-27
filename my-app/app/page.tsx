@@ -99,7 +99,8 @@ export default function HomePage() {
       {/* Header */}
       <header className={styles.header}>
         <div className={styles.userInfo}>
-          <span>Welcome, {user?.email}!</span>
+          <Link href="/subscribe"> <button>Get Access to IntelliSearch Pro</button> </Link>
+          <button className={styles.logoutButton}>Welcome, {user?.email}!</button>
           <button className={styles.logoutButton} onClick={handleLogout}>
             Log Out
           </button>
@@ -110,7 +111,7 @@ export default function HomePage() {
       <div className={styles.container}>
         <h1 className={styles.title}>Welcome to IntelliSearch!</h1>
         <p className={styles.subtitle}>This is the homepage of the news digest app.</p>
-        <Link href="/subscribe"> <button>Subscribe Now</button> </Link>
+       
 
 
         <div className={styles.formContainer}>

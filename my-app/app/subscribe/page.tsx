@@ -29,7 +29,7 @@ export default function Subscribe() {
           Subscribe to <span className={styles.brand}>IntelliSearch Pro</span>
         </h1>
         <p className={styles.description}>
-          Unlock exclusive features with IntelliSearch's subscription plan:
+          Unlock exclusive features with IntelliSearch's subscription plan, coming soon!
         </p>
         <div className={styles.benefitsContainer}>
           <div className={styles.benefit}>
@@ -60,9 +60,10 @@ export default function Subscribe() {
         <p className={styles.price}>
           <span>Only</span> <strong>$2.99/month</strong>
         </p>
-        <button onClick={handleSubscribe} className={styles.subscribeButton}>
+{/*         
+         <button onClick={handleSubscribe} className={styles.subscribeButton}>
           Subscribe Now
-        </button>
+        </button> */}
       </div>
     </div>
   );
