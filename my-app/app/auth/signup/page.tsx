@@ -1,5 +1,3 @@
-// app/auth/signup.tsx
-
 "use client";
 
 import React, { useState } from "react";
@@ -23,8 +21,14 @@ export default function SignupPage() {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       router.push("/"); // Redirect to homepage after successful signup
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        // If the error is an instance of Error, get the message
+        setError(err.message);
+      } else {
+        // Fallback error message
+        setError("An unexpected error occurred.");
+      }
     }
   };
 

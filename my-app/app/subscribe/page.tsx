@@ -4,23 +4,24 @@ import React from "react";
 import styles from "./SubscribePage.module.css"; // Import CSS file for styling
 
 export default function Subscribe() {
-  const handleSubscribe = async () => {
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: "user@example.com" }), // Replace with actual user email
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url; // Redirect to Stripe Checkout
-      } else {
-        alert("Failed to initiate subscription!");
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // uncomment the following for future releases (stripe integration)
+  // const handleSubscribe = async () => {
+  //   try {
+  //     const res = await fetch("/api/checkout", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ email: "user@example.com" }), // Replace with actual user email
+  //     });
+  //     const data = await res.json();
+  //     if (data.url) {
+  //       window.location.href = data.url; // Redirect to Stripe Checkout
+  //     } else {
+  //       alert("Failed to initiate subscription!");
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <div className={styles.container}>
@@ -29,7 +30,7 @@ export default function Subscribe() {
           Subscribe to <span className={styles.brand}>IntelliSearch Pro</span>
         </h1>
         <p className={styles.description}>
-          Unlock exclusive features with IntelliSearch's subscription plan, coming soon!
+          Unlock exclusive features with IntelliSearch Pro, coming soon!
         </p>
         <div className={styles.benefitsContainer}>
           <div className={styles.benefit}>

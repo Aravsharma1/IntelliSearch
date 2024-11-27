@@ -22,9 +22,14 @@ export async function GET(request) {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Failed to fetch news' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    console.error('Error fetching news:', error); // Log the error to the server
+    return new Response(
+      JSON.stringify({ error: `Failed to fetch news: ${error.message}` }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
+  
 }

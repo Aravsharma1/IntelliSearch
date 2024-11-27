@@ -1,5 +1,3 @@
-// app/auth/signin.tsx
-
 "use client";
 
 import React, { useState } from "react";
@@ -23,8 +21,13 @@ export default function SigninPage() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/"); // Redirect to homepage
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        // Check if err is an instance of the Error class
+        setError(err.message);
+      } else {
+        setError("An unexpected error occurred.");
+      }
     }
   };
 
@@ -54,7 +57,7 @@ export default function SigninPage() {
         </button>
       </form>
       <p className={styles.redirectText}>
-        Don't have an account?{" "}
+        Need to create a new account?{" "}
         <a href="/auth/signup" className={styles.redirectLink}>
           Sign up here
         </a>

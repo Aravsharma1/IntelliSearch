@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./HomePage.module.css";
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { User, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import firebaseConfig from "@/app/firebaseConfig"; // Ensure your Firebase config is correct
 import Link from "next/link";
@@ -25,7 +25,7 @@ export default function HomePage() {
   const [toDate, setToDate] = useState("");
   const [summary, setSummary] = useState("");
   const [articlesFetched, setArticlesFetched] = useState(false);
-  const [user, setUser] = useState<any>(null); // Track logged-in user
+  const [user, setUser] = useState<User | null>(null); // Track logged-in user
   const summaryRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
