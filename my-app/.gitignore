@@ -55,5 +55,4 @@ dataconnect/
 .firebaserc
 firebase-debug.log
 firebase.json
-.
 .github/workflows
