@@ -42,7 +42,7 @@ next-env.d.ts
 .next/
 
 # firebase files/folders 
-firebaseConfig.ts
+# firebaseConfig.ts
 database-debug.log
 firestore-debug.log
 dataconnect-debug.log
