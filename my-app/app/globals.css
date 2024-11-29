@@ -1,0 +1,33 @@
+/* globals.css */
+
+/* Apply a consistent font and background color to the entire application */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the main container and set a maximum width */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for all buttons to ensure consistency */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Change button color on hover */
+button:hover {
+  background-color: #0056b3;
+}
