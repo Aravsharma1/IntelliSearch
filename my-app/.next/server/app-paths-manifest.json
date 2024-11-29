@@ -1,6 +1,4 @@
 {
-  "/api/checkout/route": "app/api/checkout/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/success/page": "app/success/page.js",
-  "/subscribe/page": "app/subscribe/page.js"
+  "/success/page": "app/success/page.js"
 }
