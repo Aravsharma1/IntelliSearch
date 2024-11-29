@@ -5,23 +5,23 @@ import styles from "./SubscribePage.module.css"; // Import CSS file for styling
 
 export default function Subscribe() {
   // uncomment the following for future releases (stripe integration)
-  // const handleSubscribe = async () => {
-  //   try {
-  //     const res = await fetch("/api/checkout", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ email: "user@example.com" }), // Replace with actual user email
-  //     });
-  //     const data = await res.json();
-  //     if (data.url) {
-  //       window.location.href = data.url; // Redirect to Stripe Checkout
-  //     } else {
-  //       alert("Failed to initiate subscription!");
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  const handleSubscribe = async () => {
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: "user@example.com" }), // Replace with actual user email
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url; // Redirect to Stripe Checkout
+      } else {
+        alert("Failed to initiate subscription!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -61,10 +61,10 @@ export default function Subscribe() {
         <p className={styles.price}>
           <span>Only</span> <strong>$2.99/month</strong>
         </p>
-{/*         
+        
          <button onClick={handleSubscribe} className={styles.subscribeButton}>
           Subscribe Now
-        </button> */}
+        </button>
       </div>
     </div>
   );
