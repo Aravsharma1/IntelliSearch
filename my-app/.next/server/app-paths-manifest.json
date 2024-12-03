@@ -1,9 +1,0 @@
-{
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/checkout/route": "app/api/checkout/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/api/validate-session/route": "app/api/validate-session/route.js",
-  "/page": "app/page.js",
-  "/success/page": "app/success/page.js",
-  "/subscribe/page": "app/subscribe/page.js"
-}
