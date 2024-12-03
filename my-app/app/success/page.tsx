@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-export default function SuccessPage() {
+function SuccessContent() {
   const [isValid, setIsValid] = useState(false);
-  const [loading, setLoading] = useState(true); // Add loading state
-  const searchParams = useSearchParams(); // Hook to access query params
+  const [loading, setLoading] = useState(true);
+  const searchParams = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function SuccessPage() {
 
         if (data.isValid) {
           setIsValid(true);
-          // Trigger email sending or other actions here if needed
+          // Trigger email sending
           await fetch("/api/send-email", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -50,11 +50,11 @@ export default function SuccessPage() {
   }, [router, searchParams]);
 
   if (loading) {
-    return <p>Loading...</p>; // Optionally show a spinner or loading message
+    return <p>Loading...</p>; // Show a loading message or spinner
   }
 
   if (!isValid) {
-    return null; // Do not render anything if session is invalid
+    return null; // Do not render anything for invalid sessions
   }
 
   return (
@@ -64,5 +64,13 @@ export default function SuccessPage() {
       <p>Check your inbox for a welcome email!</p>
       <button onClick={() => router.push("/")}>Go to Homepage</button>
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <SuccessContent />
+    </Suspense>
   );
 }
