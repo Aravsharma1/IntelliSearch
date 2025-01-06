@@ -110,6 +110,9 @@ Set Date Range:
 <img width="870" alt="Screenshot 2024-11-16 at 5 19 22 AM" src="https://github.com/user-attachments/assets/ed095674-2220-4ab0-8312-ab38645d6912">
 <img width="870" alt="Screenshot 2024-11-16 at 5 19 22 AM" src="https://github.com/user-attachments/assets/6c883a9e-0655-4e81-82a8-880d63bc2679">
 
+IntelliSearch Pro (still in development): 
+<img width="1470" alt="Screenshot 2025-01-06 at 11 08 37 PM" src="https://github.com/user-attachments/assets/310777eb-e1ad-4b27-aa40-a2c8bf4fcef9" />
+
 Stripe Integration: 
 
 
