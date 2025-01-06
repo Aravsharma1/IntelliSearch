@@ -42,7 +42,7 @@ IntelliSearch is an AI-powered news aggregation and summarization tool designed 
 ## Tech Stack
 
 - **Frontend**: React, Next.js, TailwindCSS
-- **Backend**: Node.js, OpenAI API, News API
+- **Backend**: Node.js, OpenAI API, News API, Firebase
 - **Styling**: Custom CSS (using a `HomePage.module.css` file)
 - **Environment Management**: dotenv
 
@@ -109,3 +109,13 @@ Set Date Range:
 <img width="870" alt="Screenshot 2024-11-16 at 5 19 22 AM" src="https://github.com/user-attachments/assets/284e5ee6-24de-4964-96cc-a80081703f44">
 <img width="870" alt="Screenshot 2024-11-16 at 5 19 22 AM" src="https://github.com/user-attachments/assets/ed095674-2220-4ab0-8312-ab38645d6912">
 <img width="870" alt="Screenshot 2024-11-16 at 5 19 22 AM" src="https://github.com/user-attachments/assets/6c883a9e-0655-4e81-82a8-880d63bc2679">
+
+Stripe Integration: 
+
+
+<img width="870" alt="Screenshot 2024-11-16 at 5 19 22 AM" src="https://github.com/user-attachments/assets/cb3f122d-2410-4e40-bd83-47bec1125c18">
+
+Authentication using Firebase: 
+
+<img width="870" alt="Screenshot 2024-11-16 at 5 19 22 AM" src="https://github.com/user-attachments/assets/0965daf6-415f-4047-bf9c-2654cd90bca6">
+<img width="870" alt="Screenshot 2024-11-16 at 5 19 22 AM" src="https://github.com/user-attachments/assets/1ddc356a-a362-48b2-b0cc-6425875ef1b0">
